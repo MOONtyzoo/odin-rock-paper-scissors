@@ -1,5 +1,19 @@
 console.log("External .js file connected");
 
+function getHumanChoice() {
+    let input = prompt("Choose rock, paper, or scissors?: ")
+    if (input == "rock" || input == "paper" || input == "scissors") {
+        return input;
+    }
+    // User has entered an incorrect input
+    while (true){
+        input = prompt("Incorrect input. Please choose rock, paper, or scissors");
+        if (input == "rock" || input == "paper" || input == "scissors") {
+            return input;
+        }
+    }
+}
+
 function getComputerChoice() {
     let randomChoice = Math.floor(Math.random()*3)
     let decision = ""
@@ -25,4 +39,4 @@ function testComputerChoice() {
     console.log(`Rocks: ${rocks}\nPapers: ${papers}\nScissors: ${scissors}`)
 }
 
-testComputerChoice()
+console.log(getHumanChoice())
