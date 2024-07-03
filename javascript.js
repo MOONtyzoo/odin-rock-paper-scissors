@@ -1,6 +1,27 @@
 let humanScore = 0;
 let computerScore = 0;
 
+function playGame(totalRounds) {
+    for (let round = 1; round <= totalRounds; round++) {
+        console.log("---------- ROUND " + round + " ----------")
+        console.log("Your score: " + humanScore)
+        console.log("Opponent's score: " + computerScore)
+        playRound(getHumanChoice(), getComputerChoice())
+        console.log("\n")
+    }
+    
+    console.log("---------- FINAL RESULTS ----------")
+    console.log("Your score: " + humanScore)
+    console.log("Opponent's score: " + computerScore)
+    if (humanScore > computerScore) {
+        console.log("YOU WON!")
+    } else if (humanScore < computerScore) {
+        console.log("YOU LOSE!")
+    } else {
+        console.log("IT'S A DRAW!")
+    }
+}
+
 function playRound(humanChoice, computerChoice) {
     let result = compareMoves(humanChoice, computerChoice)
     if (result == -1) {
@@ -83,4 +104,4 @@ function testComputerChoice() {
 }
 
 
-playRound(getHumanChoice(), getComputerChoice())
+playGame(5)
