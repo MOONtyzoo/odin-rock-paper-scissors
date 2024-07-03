@@ -44,13 +44,13 @@ function compareMoves(move1, move2) {
 }
 
 function getHumanChoice() {
-    let input = prompt("Choose rock, paper, or scissors?: ")
+    let input = prompt("Choose rock, paper, or scissors?: ").toLowerCase()
     if (input == "rock" || input == "paper" || input == "scissors") {
         return input;
     }
     // User has entered an incorrect input
     while (true){
-        input = prompt("Incorrect input. Please choose rock, paper, or scissors");
+        input = prompt("Incorrect input. Please choose rock, paper, or scissors").toLowerCase();
         if (input == "rock" || input == "paper" || input == "scissors") {
             return input;
         }
