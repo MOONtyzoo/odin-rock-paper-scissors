@@ -8,36 +8,42 @@ paperButton.addEventListener("click", () => playRound("paper", getComputerChoice
 let scissorsButton = document.querySelector("#scissorsButton")
 scissorsButton.addEventListener("click", () => playRound("scissors", getComputerChoice()))
 
+let resultsDisplay = document.querySelector("#resultsDisplay")
+function displayPara(text) {
+    let para = document.createElement("p")
+    para.textContent = text
+    resultsDisplay.appendChild(para)
+}
+
 function playGame(totalRounds) {
     for (let round = 1; round <= totalRounds; round++) {
-        console.log("---------- ROUND " + round + " ----------")
-        console.log("Your score: " + humanScore)
-        console.log("Opponent's score: " + computerScore)
+        displayPara("---------- ROUND " + round + " ----------")
+        displayPara("Your score: " + humanScore)
+        displayPara("Opponent's score: " + computerScore)
         playRound(getHumanChoice(), getComputerChoice())
-        console.log("\n")
     }
     
-    console.log("---------- FINAL RESULTS ----------")
-    console.log("Your score: " + humanScore)
-    console.log("Opponent's score: " + computerScore)
+    displayPara("---------- FINAL RESULTS ----------")
+    displayPara("Your score: " + humanScore)
+    displayPara("Opponent's score: " + computerScore)
     if (humanScore > computerScore) {
-        console.log("YOU WON!")
+        displayPara("YOU WON!")
     } else if (humanScore < computerScore) {
-        console.log("YOU LOSE!")
+        displayPara("YOU LOSE!")
     } else {
-        console.log("IT'S A DRAW!")
+        displayPara("IT'S A DRAW!")
     }
 }
 
 function playRound(humanChoice, computerChoice) {
     let result = compareMoves(humanChoice, computerChoice)
     if (result == -1) {
-        console.log(`You lose! ${computerChoice} beats ${humanChoice}.`);
+        displayPara(`You lose! ${computerChoice} beats ${humanChoice}.`);
         computerScore++;
     } else if (result == 0) {
-        console.log(`It's a draw! Both players chose ${humanChoice}.`);
+        displayPara(`It's a draw! Both players chose ${humanChoice}.`);
     } else if (result == 1) {
-        console.log(`You win! ${humanChoice} beats ${computerChoice}.`);
+        displayPara(`You win! ${humanChoice} beats ${computerChoice}.`);
         humanScore++;
     }
 }
