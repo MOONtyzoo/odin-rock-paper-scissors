@@ -8,6 +8,11 @@ paperButton.addEventListener("click", () => playRound("paper", getComputerChoice
 let scissorsButton = document.querySelector("#scissorsButton")
 scissorsButton.addEventListener("click", () => playRound("scissors", getComputerChoice()))
 
+let scoreDisplay = document.querySelector("#score")
+function updateScoreDisplay() {
+    score.textContent = `Player: ${humanScore}\tComputer: ${computerScore}`
+}
+
 let resultsDisplay = document.querySelector("#resultsDisplay")
 function displayPara(text) {
     let para = document.createElement("p")
@@ -46,6 +51,7 @@ function playRound(humanChoice, computerChoice) {
         displayPara(`You win! ${humanChoice} beats ${computerChoice}.`);
         humanScore++;
     }
+    updateScoreDisplay()
 }
 
 // returns -1 on loss, 0 on draw, and 1 on a win
