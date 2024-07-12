@@ -1,6 +1,13 @@
 let humanScore = 0;
 let computerScore = 0;
 
+let rockButton = document.querySelector("#rockButton")
+rockButton.addEventListener("click", () => playRound("rock", getComputerChoice()))
+let paperButton = document.querySelector("#paperButton")
+paperButton.addEventListener("click", () => playRound("paper", getComputerChoice()))
+let scissorsButton = document.querySelector("#scissorsButton")
+scissorsButton.addEventListener("click", () => playRound("scissors", getComputerChoice()))
+
 function playGame(totalRounds) {
     for (let round = 1; round <= totalRounds; round++) {
         console.log("---------- ROUND " + round + " ----------")
@@ -102,6 +109,3 @@ function testComputerChoice() {
     }
     console.log(`Rocks: ${rocks}\nPapers: ${papers}\nScissors: ${scissors}`)
 }
-
-
-playGame(5)
