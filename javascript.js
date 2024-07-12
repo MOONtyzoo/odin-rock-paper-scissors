@@ -28,6 +28,10 @@ function playGame(totalRounds) {
         playRound(getHumanChoice(), getComputerChoice())
     }
     
+    displayFinalResults()
+}
+
+function displayFinalResults() {
     displayPara("---------- FINAL RESULTS ----------")
     displayPara("Your score: " + humanScore)
     displayPara("Opponent's score: " + computerScore)
@@ -52,6 +56,7 @@ function playRound(humanChoice, computerChoice) {
         humanScore++;
     }
     updateScoreDisplay()
+    if (humanScore >= 5 || computerScore >= 5) displayFinalResults()
 }
 
 // returns -1 on loss, 0 on draw, and 1 on a win
